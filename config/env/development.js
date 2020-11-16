@@ -1,4 +1,24 @@
+let CONSTANTS = Object.freeze({
+                                DATASET_FILE_PATH         : './datasets/',
+                                DATASET_FILE_EXTENSION    : '.csv',
+                                DATASET_FILE_KEYWORD_TRAIN: 'TRAIN',
+                                DATASET_FILE_KEYWORD_TEST : 'TEST',
+                                DATASET_ALLERGY_KEYWORDS  : Object.freeze([
+                                                                            'EGG',
+                                                                            'FISH',
+                                                                            'MILK',
+                                                                            'NUTS',
+                                                                            'PEANUT',
+                                                                            'SESAME',
+                                                                            'SHELLFISH',
+                                                                            'SOYA',
+                                                                            'WHEAT',
+                                                                          ]),
+                              });
+
 module.exports = {
+
+  CONSTANTS: CONSTANTS,
 
   models: {
     migrate: 'safe',

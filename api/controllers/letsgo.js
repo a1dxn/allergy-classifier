@@ -6,11 +6,18 @@ module.exports = {
 
   inputs: {},
 
-  exits: {},
+  exits: {
+    JSON: {
+      responseType: ''
+    }
+  },
 
   fn: async function(inputs, exits) {
 
-    // All done.
+    const dataset = await sails.helpers.dataset('shellfish', 'train');
+    // console.log(JSON.stringify(dataset));
+
+    exits.JSON(dataset);
 
   },
 
