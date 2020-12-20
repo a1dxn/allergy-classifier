@@ -1,37 +1,27 @@
 {
-  "name": "allergy-classifier",
-  "private": true,
+  "name": "allergy-classifier-web",
   "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
-  "dependencies": {
-    "sails": "^1.4.0",
-    "grunt": "1.0.4",
-    "sails-hook-grunt": "^4.0.0",
-    "sails-hook-orm": "^2.1.1",
-    "sails-hook-sockets": "^2.0.0",
-    "@sailshq/connect-redis": "^3.2.1",
-    "@sailshq/socket.io-redis": "^5.2.0",
-    "@sailshq/lodash": "^3.10.3"
-  },
-  "devDependencies": {
-    "eslint": "5.16.0",
-    "node-cache": "^5.1.2"
-  },
+  "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
-    "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "start": "node ./bin/www"
   },
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/aidan/allergy-classifier.git"
-  },
-  "author": "aidan",
-  "license": "",
-  "engines": {
-    "node": "^14.15"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cron": "^1.8.2",
+    "csvtojson": "^2.0.10",
+    "date-and-time": "^0.14.1",
+    "debug": "~2.6.9",
+    "decision-tree": "^0.3.1",
+    "deep-freeze": "0.0.1",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "joi": "^17.3.0",
+    "lodash": "^4.17.20",
+    "log": "^6.0.0",
+    "log-node": "^7.0.0",
+    "morgan": "~1.9.1",
+    "node-cache": "^5.1.2",
+    "socket.io": "^3.0.4"
   }
 }

@@ -1,0 +1,1872 @@
+{
+  "allergyKey": "NUTS",
+  "uuid": "NUTS-I6CMTP2ONVO",
+  "accuracy": {
+    "TP": 198,
+    "TN": 286,
+    "FP": 78,
+    "FN": 28,
+    "accuracy": 0.8203389830508474,
+    "sensitivity": 0.8761061946902655,
+    "specificity": 0.7857142857142857,
+    "recall": 0.8761061946902655,
+    "precision": 0.717391304347826
+  },
+  "model": {
+    "name": "SHELLFISH",
+    "alias": "SHELLFISH_rdm7bjq9610o",
+    "type": "feature",
+    "vals": [
+      {
+        "name": 0,
+        "alias": "0_rfdrn3i1i5f",
+        "type": "feature_value",
+        "child": {
+          "name": "MILK",
+          "alias": "MILK_r6cj6oitvbo8",
+          "type": "feature",
+          "vals": [
+            {
+              "name": 0,
+              "alias": "0_rq3o2eca27kg",
+              "type": "feature_value",
+              "child": {
+                "name": "PEANUT",
+                "alias": "PEANUT_rmqmqdann708",
+                "type": "feature",
+                "vals": [
+                  {
+                    "name": 0,
+                    "alias": "0_r2v450nuvjpg",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "FISH",
+                      "alias": "FISH_rjbd3udckung",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_ro6fel68pgqo",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SOYA",
+                            "alias": "SOYA_rt0k16pmpqqo",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_r8l0o1mfere",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_r6a3nafutc1",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rttkbucass9o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "WHEAT",
+                                        "alias": "WHEAT_ri1vo56p09io",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rb2eq8jol9i8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_rn91tlpa362g",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rps3f0mthvtg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rcd7m4b0ksg"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_r00orem7gsog",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rh0c63lmd18o"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rq1o8dc5i508",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_rp8ul695b62",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r886ltc411hg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r0nglm6t24k"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_r1a94t6nsq6",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "WHEAT",
+                                        "alias": "WHEAT_ril3qud39f88",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rj8htc2vcu38",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_rtpq2ngh0lb8",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_ric6pjjlkngg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rgrrl3totnb"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rdj095sjkk0g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 1,
+                                              "name": 1,
+                                              "alias": "1_rpn8agjue7i8"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rqt0n1r526n8",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_rc6mghtjpn98",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rur79h025evg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "SESAME",
+                                        "alias": "SESAME_ro1gp1bg4iqg",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rubh4724qk6",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rik68ujouh8g",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r8gcfshvc0ag",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rk3eudosjvrg"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_r6chl7bucea",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_r2dtnu08b0to"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_r5hfog60fd4o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "SESAME",
+                                        "alias": "SESAME_rc8dgtejvpho",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r5tmj9gij5ao",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rp9gfm3hdpu",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rk3nkt2u5svg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rlvfgf2l11r"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_r67kvcvdje68",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SOYA",
+                            "alias": "SOYA_rb318f3f8eb8",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_r01f0hknajd",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "WHEAT",
+                                  "alias": "WHEAT_r2fp555mtsc",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r7qkg0mgaku8",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rs75dr6936fg",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rdpt32ohj0p8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_re4u3jv8p4m",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rtb5djqopnm8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r2lpku78bom8"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rdotve8o47g8",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rib4ifko38ig",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r8h01qsb5cuo",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_roq47s802bug",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rvm5n1vk6kno",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_r3vklgiekip8"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rftegmejuklo",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_r9241ck3otb"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": 1,
+                    "alias": "1_rk634eb56gdo",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "SESAME",
+                      "alias": "SESAME_rdel2q1a826g",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_rjjt4lbdchc8",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "FISH",
+                            "alias": "FISH_r3f393m9d3fo",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rog4fh5triqo",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "WHEAT",
+                                  "alias": "WHEAT_rfl1ubqnd7kg",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r2sehin5cm4o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rl5e4n1g50go",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rk7h2kfq69v8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SOYA",
+                                              "alias": "SOYA_reu3fdvjh4pg",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_ru316cjadkd",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_ri17tcbgm18"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_rcftes1nerg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r618kr1u8338"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rhhfpffv87f",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SOYA",
+                                              "alias": "SOYA_rg95m0v4bp3",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rhv1tu0tebv8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rsmnqvk2e5i8"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_r7lhbtbgturg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rq9o045bqvo"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rkrj8t4v8hcg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_r59c69fctkio",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rd98ijjev1dg",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 1,
+                                              "name": 1,
+                                              "alias": "1_ra0mk8828aa8"
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_ric38aknltcg",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_rtvghomclf4o"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_ruo0pq5eceig",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_rbncth23il88",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rcuchr6423fo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 1,
+                                        "name": 1,
+                                        "alias": "1_rkfv2icrts8o"
+                                      }
+                                    },
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rd1186m2blf8",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "SOYA",
+                                        "alias": "SOYA_rn36d1pn07q8",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_riklht2qa9ao",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rufvuvf1gdo",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rni0rbd5atug",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rk75qrnbbk2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_rtm5froc1qo",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "WHEAT",
+                            "alias": "WHEAT_rov89m5p3r9g",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_r75odo9ilbu8",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "SOYA",
+                                  "alias": "SOYA_riedvlmjnglg",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_roboklk1kebo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rl742jsa5cbo",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r9cmbsg1bq6g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "FISH",
+                                              "alias": "FISH_rg1khph8rugg",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r3hlvfbisc58",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rlsrgkpjbbo8"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rau6ojid2bc",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 1,
+                                        "name": 1,
+                                        "alias": "1_r7a7rb13aij"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rt8gim3i68e8",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_r7v9g3nnrtpo"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": 1,
+              "alias": "1_rdi0busn5vqg",
+              "type": "feature_value",
+              "child": {
+                "name": "EGG",
+                "alias": "EGG_rodiku83dm1o",
+                "type": "feature",
+                "vals": [
+                  {
+                    "name": 0,
+                    "alias": "0_r63pcqfheql8",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "PEANUT",
+                      "alias": "PEANUT_rmjkmd3nt7ag",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_rreuddfqefp8",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SOYA",
+                            "alias": "SOYA_rbm658pdjku8",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rsrnp5gdukog",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "WHEAT",
+                                  "alias": "WHEAT_rs0eu5dnsuco",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r7pbagsa9mq",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_reseeiklfj5o",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rhu30j3cor0g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_rbtbl2jsrjfo",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_ros9d8bs7p4g",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rmb6mcl8hbp"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rl8v03fu328",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_rubva7l0ri38"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_r5vvpdrju66o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 0,
+                                        "name": 0,
+                                        "alias": "0_r2vc1b5dijh"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_r9td9ta88apo",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 0,
+                                  "name": 0,
+                                  "alias": "0_r5039ma9ubpo"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_r8616gjdsnj8",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "WHEAT",
+                            "alias": "WHEAT_r9hdtcitu4fo",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rsr9n7lglip8",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "SESAME",
+                                  "alias": "SESAME_rg943okc1j5g",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rpje0ek4eulo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_r0iir9533a78",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_redvkqtgd6k8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SOYA",
+                                              "alias": "SOYA_rsbv1qai9npo",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r8ik7faiiro8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rbu7qjstj428"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_reh5utnmof8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_r8173dlokp"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rm0b1m217m8g",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 0,
+                                        "name": 0,
+                                        "alias": "0_rovs9orq1idg"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rh28lfvnvqqo",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 0,
+                                  "name": 0,
+                                  "alias": "0_rl406bj6j2e8"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": 1,
+                    "alias": "1_r83bjhgkc6gg",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "WHEAT",
+                      "alias": "WHEAT_rpgiu0iv5ido",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_rb8cs3bemnr8",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SESAME",
+                            "alias": "SESAME_r8fajvauila",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rjvi6632h4fo",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "SOYA",
+                                  "alias": "SOYA_rs0tpou0lbn",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 1,
+                                      "alias": "1_r2b2i9mhlp3o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_r44rtj9si63o",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rfsoc16c490g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "PEANUT",
+                                              "alias": "PEANUT_r7cllliior78",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_rksa0vhgvdsg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r0fd0ufua5"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r23ndeq211fg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r8eauh8a2eb8"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_r56bktteom4g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_r4324p5cdnu8"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r678bgs87flg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_r98pd5dicbmg",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rdlj18b88go8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "PEANUT",
+                                              "alias": "PEANUT_ra39f1roc9e",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rra1s3jjeeu",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rcmutrnupaf"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_r8t6kvs7633",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rd305t531neg"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_r8qir5kihd38",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "PEANUT",
+                                              "alias": "PEANUT_ro4jrrnk4hlo",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_rvctjdubiug",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rtv8ojasq7to"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_raii6d04tkso",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_r3vjd6i96oe8"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rg66275ctcvo",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_rd2t9nrd091"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_rtaofc1oceno",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "PEANUT",
+                            "alias": "PEANUT_r8s9tj2hjtao",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rtfq5t35e9u",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_rbm6pnomkil8"
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_r4ord284ujr",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "SOYA",
+                                  "alias": "SOYA_rp406qpbm6jg",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rrm7egpbg8s8",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_rqfejf3l7e7o",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rdv1phgp0g1g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_rr3kapifcncg",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_raml0rh82oj8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rdnenfg9v43o"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rofkb7tpvleg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 1,
+                                        "name": 1,
+                                        "alias": "1_r9gusfh0gl6o"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": 1,
+        "alias": "1_r84r8pm9vuho",
+        "type": "feature_value",
+        "child": {
+          "name": "MILK",
+          "alias": "MILK_r4dm2le0tbd8",
+          "type": "feature",
+          "vals": [
+            {
+              "name": 0,
+              "alias": "0_r6vup9aqe0v8",
+              "type": "feature_value",
+              "child": {
+                "name": "SOYA",
+                "alias": "SOYA_rj2bvq60cia8",
+                "type": "feature",
+                "vals": [
+                  {
+                    "name": 0,
+                    "alias": "0_r64dc6f71v8o",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "PEANUT",
+                      "alias": "PEANUT_r0vk7qn6a5tg",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_r50oscfc6op",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SESAME",
+                            "alias": "SESAME_rmrsk2ci1rdg",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_r4kjfutusdpg",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "FISH",
+                                  "alias": "FISH_rib2pk0hkrd",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r2sf7ugfqgf",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rvtsetta6iao",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rgrq5tn95er",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_r3la8didg2g"
+                                            }
+                                          },
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rqoi096o94ao",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_r597gngjvr0o",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rj86f9j6f1d8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rjuil4nudtag"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rd4jadm8u0lo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_r5669nfgu53",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r0vutd3lfitg",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rij9nqta49ro",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r61dj6hnbk88",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rs8np53af3ng"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_r9eu9ecsgnvo",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 1,
+                                              "name": 1,
+                                              "alias": "1_rblognqe4mk8"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rnq01ik4r3no",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 0,
+                                  "name": 0,
+                                  "alias": "0_r6efev86v368"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_r5dtb6j680po",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SESAME",
+                            "alias": "SESAME_r0ar6od54f5",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_r7rldsbic5dg",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "FISH",
+                                  "alias": "FISH_r5fpt0bquv0g",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rde7ndv9csjo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "WHEAT",
+                                        "alias": "WHEAT_rn6ehnsu378",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rus944ig0hj",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "EGG",
+                                              "alias": "EGG_rpur5q0ji8u",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rjqqmej12p3",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rhla07e5e4ag"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_rpi053fm2f4o",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_r7uei5v4ik1"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rgor35qime18",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_rnrepk3ndln8"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rfs0od3ukchg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rssof8jep21o",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_ro25a5cbn72g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_rgogc2gpl12g"
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rpjum255e8cg",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_re8ckssc9iro",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rbfav3ij30e",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rki6cq6k0pig"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_rs1pigfikqr8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rhqebf566s7g"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_rfa9tka7osmg",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_r6rb0f1di41"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": 1,
+                    "alias": "1_rpo97i15f0k",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "PEANUT",
+                      "alias": "PEANUT_r83fqms1nad",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_rctdcnkpenmg",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "WHEAT",
+                            "alias": "WHEAT_ri2hc6rifc0g",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rno31p4vsrvg",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_rbkiv9po2f3",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rqfj4gocbkcg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_rdbtuni3g40o",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rt0esp8g0cso",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "SESAME",
+                                              "alias": "SESAME_ruf1n9oia4m",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_rj39pjgqeug8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rbvptif0ibtg"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_r433p7jufc5g",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_r97i40rd0d88"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_r3ov25rhrhe8",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "WHEAT",
+                            "alias": "WHEAT_rh9n2fer8rmg",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 1,
+                                "alias": "1_r6cu7ejmoe0g",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_rhc3s0p5bj1g",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rhr964rej2bo",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 0,
+                                        "name": 0,
+                                        "alias": "0_rsqlpjhnse8"
+                                      }
+                                    },
+                                    {
+                                      "name": 0,
+                                      "alias": "0_rq1bmes2ta6o",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 1,
+                                        "name": 1,
+                                        "alias": "1_rpcqifusjgg"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 0,
+                                "alias": "0_rh3fo29rrj18",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "EGG",
+                                  "alias": "EGG_rmfcrno36f78",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 1,
+                                      "alias": "1_r9gknlriunc",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "FISH",
+                                        "alias": "FISH_r72o0j3k1dr8",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 1,
+                                            "alias": "1_r84bikqosoq8",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_riu8afn3fe7o"
+                                            }
+                                          },
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r6ra1rg57uog",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 1,
+                                              "name": 1,
+                                              "alias": "1_rm0m0c8mhr4g"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r6vf26oicuug",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "type": "result",
+                                        "val": 0,
+                                        "name": 0,
+                                        "alias": "0_ro0jph3tbvho"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": 1,
+              "alias": "1_rnem7t65bflo",
+              "type": "feature_value",
+              "child": {
+                "name": "SESAME",
+                "alias": "SESAME_rlniqnb6ss2g",
+                "type": "feature",
+                "vals": [
+                  {
+                    "name": 0,
+                    "alias": "0_rn7r2mnrvtb",
+                    "type": "feature_value",
+                    "child": {
+                      "name": "FISH",
+                      "alias": "FISH_rqarbv3aadao",
+                      "type": "feature",
+                      "vals": [
+                        {
+                          "name": 0,
+                          "alias": "0_rus32ee4d1jo",
+                          "type": "feature_value",
+                          "child": {
+                            "name": "SOYA",
+                            "alias": "SOYA_rsnlmj05noug",
+                            "type": "feature",
+                            "vals": [
+                              {
+                                "name": 0,
+                                "alias": "0_rb8p754dudb",
+                                "type": "feature_value",
+                                "child": {
+                                  "name": "PEANUT",
+                                  "alias": "PEANUT_rrjmmdhj88h8",
+                                  "type": "feature",
+                                  "vals": [
+                                    {
+                                      "name": 0,
+                                      "alias": "0_r416uuj95e2",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rmb1e97644q8",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 0,
+                                            "alias": "0_rbrm1n666m9",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rfqao29bm21",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r4q4oo3f01kg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rma89bl8pd7o"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_r3shoq5jlnn8",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_rr1md5qtv77g"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 1,
+                                            "alias": "1_rb8unuen4gqg",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_r68rqeo6cis8",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r44rk94jra6",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_ri6jfu1ac5bo"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_r2v07ujl375g",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rgq15k0e96bo"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "name": 1,
+                                      "alias": "1_rpnp51eb0fbg",
+                                      "type": "feature_value",
+                                      "child": {
+                                        "name": "EGG",
+                                        "alias": "EGG_rkhd4rnikon8",
+                                        "type": "feature",
+                                        "vals": [
+                                          {
+                                            "name": 1,
+                                            "alias": "1_ru87lidqes58",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "name": "WHEAT",
+                                              "alias": "WHEAT_rv8a3im421l",
+                                              "type": "feature",
+                                              "vals": [
+                                                {
+                                                  "name": 0,
+                                                  "alias": "0_r57kg4gv4pgo",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 1,
+                                                    "name": 1,
+                                                    "alias": "1_r5blajshfuoo"
+                                                  }
+                                                },
+                                                {
+                                                  "name": 1,
+                                                  "alias": "1_raig2pbq71kg",
+                                                  "type": "feature_value",
+                                                  "child": {
+                                                    "type": "result",
+                                                    "val": 0,
+                                                    "name": 0,
+                                                    "alias": "0_rsmq1idvt8qo"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "name": 0,
+                                            "alias": "0_r5ggs2ejbb0g",
+                                            "type": "feature_value",
+                                            "child": {
+                                              "type": "result",
+                                              "val": 0,
+                                              "name": 0,
+                                              "alias": "0_ri6jjhc3513o"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "name": 1,
+                                "alias": "1_r21436mst51g",
+                                "type": "feature_value",
+                                "child": {
+                                  "type": "result",
+                                  "val": 1,
+                                  "name": 1,
+                                  "alias": "1_r2j1lmaio41g"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": 1,
+                          "alias": "1_rgj4gi044opg",
+                          "type": "feature_value",
+                          "child": {
+                            "type": "result",
+                            "val": 1,
+                            "name": 1,
+                            "alias": "1_rbbn0n5e84co"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": 1,
+                    "alias": "1_ru8cjkm3slu8",
+                    "type": "feature_value",
+                    "child": {
+                      "type": "result",
+                      "val": 0,
+                      "name": 0,
+                      "alias": "0_rm6ticckogto"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
