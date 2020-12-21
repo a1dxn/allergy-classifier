@@ -10,23 +10,20 @@ const getDataset = require("./get-dataset");
  * @returns {Promise<{bootstrapIncluded : [], bootstrapExcluded : []}>}
  */
 module.exports = async function generateBootstrapSet(allergyKey) {
-	allergyKey = Schema.string().required().uppercase()
-					   .pattern(
-						   new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-						   "Allergy Key")
-					   .validate(allergyKey, {abortEarly: false});
-	if(allergyKey.error) {
+	throw "Temporarily unavailable. Further rework is required.";
+	allergyKey = Schema.get("allergyKey").required().validate(allergyKey, {abortEarly: false});
+	if(allergyKey?.error) {
 		log.error("Validation error on options argument. %O", allergyKey.error);
 		throw allergyKey.error;
-	} else allergyKey = allergyKey.value; //Values would be casted to correct data types
+	} else allergyKey = allergyKey?.value; //Values would be casted to correct data types
 
-	let originalDataset     = await getDataset({allergyKey});
-	originalDataset = originalDataset.data;
+	let originalDataset       = await getDataset({allergyKey}); //todo: requires adjustment
+	originalDataset           = originalDataset.data;
 	const originalDatasetSize = originalDataset.length;
 
-	let includedIndex = [];
+	let includedIndex     = [];
 	let bootstrapIncluded = [];
-	let excludedIndex = [];
+	let excludedIndex     = [];
 	let bootstrapExcluded = [];
 
 	for(let i = 0; i<originalDatasetSize; i++) {
@@ -48,11 +45,10 @@ module.exports = async function generateBootstrapSet(allergyKey) {
 			 (bootstrapIncluded.length+bootstrapExcluded.length));
 
 	let intersection = _.intersection(includedIndex, excludedIndex);
-	if(intersection > 0) {
-		log.error('INTERSECTION OF INC AND EXC: %O', intersection);
-		throw 'Intersection of included and excluded indexes... somethings happened!';
+	if(intersection>0) {
+		log.error("INTERSECTION OF INC AND EXC: %O", intersection);
+		throw "Intersection of included and excluded indexes... somethings happened!";
 	}
-
 
 	return {bootstrapIncluded, bootstrapExcluded};
 };

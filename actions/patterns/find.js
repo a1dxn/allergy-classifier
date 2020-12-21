@@ -12,21 +12,19 @@ const getDataset = require("../sets/get-dataset");
  * @returns {Promise<allergyKey, features, size, result[{path, size, support}]>}
  */
 module.exports = async function findPatterns(options) {
-	const _allergyKeySchema = Schema.string().uppercase()
-									.pattern(new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-											 "Allergy Key");
-
 	options = Schema.object({
-								allergyKey: _allergyKeySchema.required(),
+								allergyKey: Schema.get("allergyKey")
+												  .required(),
 								features  : Schema.array()
-												  .items(_allergyKeySchema.disallow(Schema.ref("allergyKey")))
+												  .items(Schema.get("allergyKey")
+															   .disallow(Schema.ref("allergyKey")))
 												  .required(),
 							})
 					.validate(options, {abortEarly: false});
-	if(options.error) {
+	if(options?.error) {
 		log.error("Validation error on options argument. %O", options.error);
 		throw options.error;
-	} else options = options.value; //Values would be casted to correct data types
+	} else options = options?.value; //Values would be casted to correct data types
 
 	const dataset = await getDataset({
 										 allergyKey: options.allergyKey,
@@ -35,7 +33,7 @@ module.exports = async function findPatterns(options) {
 
 	let sharedArray = [];
 
-	let positiveCases = dataset.data.filter((row) => row[options.allergyKey]===1);
+	let positiveCases = dataset?.data.filter((row) => row[options.allergyKey]===1);
 	log.notice("Features: %O", options.features);
 
 	while(options.features.length>0) {

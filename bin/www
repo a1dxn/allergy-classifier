@@ -9,14 +9,14 @@ require("log-node")();
 /*Logging*/
 global._log = require("log");
 /*Constants*/
-global.CONSTANT = require('../services/constant-manager');
+global.CONSTANT = require("../services/constant-manager");
 /*Date Utilities*/
 global.dateUtils = require("date-and-time");
 dateUtils.plugin(require("date-and-time/plugin/ordinal"));
 /*lodash*/
-global._ = require('lodash');
+global._ = require("lodash");
 /*Schema Validation (Joi)*/
-global.Schema = require('../services/schema-manager');
+global.Schema = require("../services/schema-manager");
 /*Web Sockets*/
 global.WS = null; //Defined in Socket.IO section
 
@@ -34,38 +34,39 @@ server.on("listening", onListening);
 /*** Socket.IO ***/
 _log.get("web-socket").notice("Initialising Socket.IO");
 const socketManager = require("../services/socket-manager");
-global.WS                  = require("socket.io")(server);
+global.WS           = require("socket.io")(server);
 WS.on("connection", (wsClient) => {
-  const flog = _log.get("web-socket");
-  flog.debug("Connection established: %s", wsClient.id);
-  socketManager(WS, wsClient).then(() => {});
+	const flog = _log.get("web-socket");
+	flog.debug("Connection established: %s", wsClient.id);
+	socketManager(WS, wsClient).then(() => {
+	});
 });
 
 /*** Event Listeners for HTTP Server ***/
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr==="string" ? "pipe "+addr : "port "+addr.port;
-  _log.get("http").notice("Listening on %s", bind);
+	const addr = server.address();
+	const bind = typeof addr==="string" ? "pipe "+addr : "port "+addr.port;
+	_log.get("http").notice("Listening on %s", bind);
 }
 
 function onError(error) {
-  if(error.syscall!=="listen") {
-    throw error;
-  }
+	if(error.syscall!=="listen") {
+		throw error;
+	}
 
-  let bind = typeof port==="string" ? "Pipe "+port : "Port "+port;
+	let bind = typeof port==="string" ? "Pipe "+port : "Port "+port;
 
-  // handle specific listen errors with friendly messages
-  switch(error.code) {
-    case "EACCES":
-      console.error(bind+" requires elevated privileges");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind+" is already in use");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+	// handle specific listen errors with friendly messages
+	switch(error.code) {
+		case "EACCES":
+			console.error(bind+" requires elevated privileges");
+			process.exit(1);
+			break;
+		case "EADDRINUSE":
+			console.error(bind+" is already in use");
+			process.exit(1);
+			break;
+		default:
+			throw error;
+	}
 }

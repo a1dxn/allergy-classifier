@@ -3,6 +3,7 @@ const log        = _log.get("combine-sets");
 const deepFreeze = require("deep-freeze");
 const keys       = CONSTANT("DATASET_ALLERGY_KEYS");
 
+//todo: method needs verifying
 //todo: convert back but excluding stats
 
 /**
@@ -14,15 +15,11 @@ const keys       = CONSTANT("DATASET_ALLERGY_KEYS");
  * @returns {Promise<{allergyKey: string, setType: string, data: Object[]}>}
  */
 module.exports = async function(allergyKey) {
-	allergyKey = Schema.string().required().uppercase()
-					   .pattern(
-						   new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-						   "Allergy Key")
-					   .validate(allergyKey, {abortEarly: false});
-	if(allergyKey.error) {
+	allergyKey = Schema.get("allergyKey").required().validate(allergyKey, {abortEarly: false});
+	if(allergyKey?.error) {
 		log.error("Validation error on options argument. %O", allergyKey.error);
 		throw allergyKey.error;
-	} else allergyKey = allergyKey.value; //Values would be casted to correct data types
+	} else allergyKey = allergyKey?.value; //Values would be casted to correct data types
 
 	log.info("Combining %s sets...", allergyKey);
 	return Promise.all([

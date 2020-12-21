@@ -16,18 +16,13 @@ const datasetCache = require("../../services/cache-manager").store("datasetstore
  */
 module.exports = async function getDataset(options) {
 	options = Schema.object({
-								allergyKey: Schema.string().required().uppercase()
-												  .pattern(
-													  new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-													  "Allergy Key"),
-								setType   : Schema.string().uppercase().valid(
-									CONSTANT("DATASET_FILE_KEYWORD_TRAIN"),
-									CONSTANT("DATASET_FILE_KEYWORD_TEST")).required() /*for now... setType is required*/
+								allergyKey: Schema.get("allergyKey").required(),
+								setType   : Schema.get("setType").required()
 							}).validate(options, {abortEarly: false});
-	if(options.error) {
+	if(options?.error) {
 		log.error("Validation error on options argument. %O", options.error);
 		throw options.error;
-	} else options = options.value; //Values would be casted to correct data types
+	} else options = options?.value; //Values would be casted to correct data types
 
 	const datasetName = options.allergyKey+(options.setType ? "_"+options.setType : "");
 

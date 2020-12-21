@@ -13,38 +13,42 @@ const getTree = require("./get");
  */
 module.exports = async function predictTree(options) {
 	options = Schema.object({
-								allergyKey: Schema.string().required().uppercase()
-												  .pattern(
-													  new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-													  "Allergy Key"),
-								data      : Schema.object().required(),
+								allergyKey: Schema.get("allergyKey").required(),
+								data      : Schema.object(Schema.get("datasetRowObject", {
+									allKeysRequired: true,
+									omitKeys       : [ String(options.allergyKey) ]
+								})).required(),
 							})
-					.validate(options, {abortEarly: false});
-	if(options.error) {
+					.validate(options);
+	if(options?.error) {
 		log.error("Validation error on options argument. %O", options.error);
 		throw options.error;
-	} else options = options.value; //Values would be casted to correct data types
+	} else options = options?.value; //Values would be casted to correct data types
 
 	const tree = await getTree(options.allergyKey);
 
-	let path = [];
+	let path       = [];
 	let prediction = null;
 	try {
-		let root = tree.model;
-		while(root.type !== 'result') {
-			path.push(root.name+':'+options.data[root.name]);
-			let childNode = _.find(root.vals, (node) => node.name === options.data[root.name]);
+		let root = tree?.model;
+		while(root.type!=="result") {
+			path.push(root.name+":"+options.data[root.name]);
+			let childNode = _.find(root.vals, (node) => node.name===options.data[root.name]);
 			if(childNode) root = childNode.child;
 			else root = root.vals[0].child;
 		}
 		prediction = root.val;
 	} catch(e) {
-		log.error('Unable to traverse tree! Error: %O', e);
+		log.error("Unable to traverse tree! Error: %O", e);
 		throw e;
 	}
-	log.info('Predicting: %O', options.data);
-	log.info('The results are in...%s:%s!', options.allergyKey, prediction===0 ? 'FALSE' : 'TRUE');
-	log.info('PATH: %O', path);
-	return {prediction, path};
+	log.info("Predicting: %O", options.data);
+	log.info("The results are in...%s:%s!", options.allergyKey, prediction===0 ? "FALSE" : "TRUE");
+	log.info("PATH: %O", path);
+
+	let r        = _.cloneDeep(options);
+	r.prediction = prediction;
+	r.path       = path;
+	return r;
 
 };

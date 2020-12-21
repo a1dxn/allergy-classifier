@@ -1,16 +1,13 @@
-const DecisionTree = require("decision-tree");
-const getDataset   = require("../sets/get-dataset");
-const saveExports  = require("../save-exports");
-const calculateAccuracy = require('./calculate-accuracy');
+const DecisionTree      = require("decision-tree");
+const getDataset        = require("../sets/get-dataset");
+const saveExports       = require("../save-exports");
+const calculateAccuracy = require("./calculate-accuracy");
 
 //todo: produce jsdoc
 
 module.exports = async function(options) {
 	options = Schema.object({
-								allergyKey: Schema.string().required().uppercase()
-												  .pattern(
-													  new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-													  "Allergy Key"),
+								allergyKey: Schema.get("allergyKey").required(),
 								saveData  : Schema.boolean().optional(),
 								trainData : Schema.any(),
 								testData  : Schema.any()
@@ -19,7 +16,7 @@ module.exports = async function(options) {
 					.with("trainData", "testData")
 					.validate(options, {abortEarly: false});
 	if(options.error) {
-		_log.get('train-tree').error("Validation error on options argument. %O", options.error);
+		_log.get("train-tree").error("Validation error on options argument. %O", options.error);
 		throw options.error;
 	} else options = options.value; //Values would be casted to correct data types
 
@@ -59,8 +56,8 @@ module.exports = async function(options) {
 					  //Lets do some predictions!
 					  let predictions = [], actuals = [];
 					  for(const d of datasets[1].data) {
-					  	actuals.push(d[options.allergyKey]);
-					  	predictions.push(tree.predict(d));
+						  actuals.push(d[options.allergyKey]);
+						  predictions.push(tree.predict(d));
 					  }
 
 					  let accuracy = await calculateAccuracy({predictions, actuals});
@@ -68,15 +65,15 @@ module.exports = async function(options) {
 					  let output = {
 						  allergyKey: options.allergyKey,
 						  uuid,
-						  type: (options.testData ? 'bs' : 'ds'),
+						  type      : (options.testData ? "bs" : "ds"),
 						  accuracy,
 						  model     : tree.toJSON()
 					  };
 					  if(options.trainData) {
-					  	output.data = {
-					  		train: options.trainData,
-							test: options.testData,
-						}
+						  output.data = {
+							  train: options.trainData,
+							  test : options.testData,
+						  };
 					  }
 					  log.info("Accuracy: %O", output.accuracy);
 					  log.debug("Model outputted");

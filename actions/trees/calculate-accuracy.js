@@ -1,4 +1,4 @@
-const log    = _log.get("calculate-accuracy");
+const log = _log.get("calculate-accuracy");
 
 /**
  * @async
@@ -12,20 +12,24 @@ const log    = _log.get("calculate-accuracy");
  */
 module.exports = async function calculateAccuracy(options) {
 	options = Schema.object({
-								predictions: Schema.array().items(Schema.number().min(0).max(1)).required()
+								predictions: Schema.array()
+												   .items(Schema.get("rowFeatureValue").required())
+												   .required()
 												   .custom((value, helpers) => {
-													   if(value.length!==options.actuals.length)
+													   if(value.length!==options.actuals.length) { // noinspection JSCheckFunctionSignatures
 														   return helpers.message(
 															   "Predictions and Actuals must be of same length.");
+													   }
 													   return value;
 												   }),
-								actuals    : Schema.array().items(Schema.number().min(0).max(1))
+								actuals    : Schema.array()
+												   .items(Schema.get("rowFeatureValue").required())
 												   .required(),
 							}).validate(options, {abortEarly: false});
-	if(options.error) {
+	if(options?.error) {
 		log.error("Validation error on options argument. %O", options.error);
 		throw options.error;
-	} else options = options.value; //Values would be casted to correct data types
+	} else options = options?.value; //Values would be casted to correct data types
 
 	let results = {
 		TP: 0, TN: 0, FP: 0, FN: 0
@@ -47,7 +51,7 @@ module.exports = async function calculateAccuracy(options) {
 	results.recall      = results.sensitivity;
 	results.precision   = results.TP/(results.TP+results.FP);
 
-	log.debug('Accuracy: %O', results);
+	log.debug("Accuracy: %O", results);
 
 	return results;
 };
