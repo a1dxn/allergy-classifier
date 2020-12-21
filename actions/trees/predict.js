@@ -8,8 +8,8 @@ const getTree = require("./get");
  *
  * @param {Object} options
  * @param {string} options.allergyKey - Allergy to predict. See constants for allowed set.
- * @param {Object} options.data - Data containing all allergy keys excluding options.allergyKey.
- * @returns {Promise<number>} 0 or 1
+ * @param {Object} options.data - Data containing all allergy key findings excluding options.allergyKey.
+ * @returns {Promise<{path : [], prediction : number}>} prediction will be 0 or 1
  */
 module.exports = async function predictTree(options) {
 	options = Schema.object({
@@ -25,12 +25,14 @@ module.exports = async function predictTree(options) {
 		throw options.error;
 	} else options = options.value; //Values would be casted to correct data types
 
-	const tree = getTree(options.allergyKey);
+	const tree = await getTree(options.allergyKey);
 
+	let path = [];
 	let prediction = null;
 	try {
 		let root = tree.model;
 		while(root.type !== 'result') {
+			path.push(root.name+':'+options.data[root.name]);
 			let childNode = _.find(root.vals, (node) => node.name === options.data[root.name]);
 			if(childNode) root = childNode.child;
 			else root = root.vals[0].child;
@@ -42,6 +44,7 @@ module.exports = async function predictTree(options) {
 	}
 	log.info('Predicting: %O', options.data);
 	log.info('The results are in...%s:%s!', options.allergyKey, prediction===0 ? 'FALSE' : 'TRUE');
-	return prediction;
+	log.info('PATH: %O', path);
+	return {prediction, path};
 
 };
