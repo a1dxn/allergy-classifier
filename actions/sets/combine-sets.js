@@ -1,5 +1,4 @@
 const getDataset = require("./get-dataset");
-const _          = require("lodash");
 const log        = _log.get("combine-sets");
 const deepFreeze = require("deep-freeze");
 const keys       = CONSTANT("DATASET_ALLERGY_KEYS");

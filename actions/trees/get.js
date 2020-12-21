@@ -1,5 +1,4 @@
 const fs         = require("fs");
-const Schema = require('joi');
 const log        = _log.get("get-tree");
 const deepFreeze = require("deep-freeze");
 const forest     = require("../../services/cache-manager").store("forest", 0 /*permanent*/);

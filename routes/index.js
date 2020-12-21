@@ -1,7 +1,6 @@
 const express = require("express");
 const router  = express.Router();
 const log     = _log.get("http:router");
-const _       = require("lodash");
 const trainer = require("../actions/trees/train");
 
 /* GET home page. */

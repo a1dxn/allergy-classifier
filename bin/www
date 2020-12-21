@@ -7,14 +7,18 @@ require("log-node")();
 
 /*** Global Variables ***/
 /*Logging*/
-_log = require("log");
+global._log = require("log");
 /*Constants*/
-CONSTANT = require('../services/constant-manager');
+global.CONSTANT = require('../services/constant-manager');
 /*Date Utilities*/
-dateUtils = require("date-and-time");
+global.dateUtils = require("date-and-time");
 dateUtils.plugin(require("date-and-time/plugin/ordinal"));
+/*lodash*/
+global._ = require('lodash');
+/*Schema Validation (Joi)*/
+global.Schema = require('../services/schema-manager');
 /*Web Sockets*/
-WS = null; //Defined in Socket.IO section
+global.WS = null; //Defined in Socket.IO section
 
 /*** HTTP Server ***/
 _log.get("http").notice("Initialising HTTP Server");
@@ -30,7 +34,7 @@ server.on("listening", onListening);
 /*** Socket.IO ***/
 _log.get("web-socket").notice("Initialising Socket.IO");
 const socketManager = require("../services/socket-manager");
-WS                  = require("socket.io")(server);
+global.WS                  = require("socket.io")(server);
 WS.on("connection", (wsClient) => {
   const flog = _log.get("web-socket");
   flog.debug("Connection established: %s", wsClient.id);

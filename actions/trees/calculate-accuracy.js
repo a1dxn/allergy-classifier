@@ -1,4 +1,3 @@
-const Schema = require("joi");
 const log    = _log.get("calculate-accuracy");
 
 /**

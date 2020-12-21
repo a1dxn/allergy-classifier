@@ -1,6 +1,5 @@
 const log        = _log.get("get-dataset");
 const csv        = require("csvtojson");
-const Schema     = require("joi");
 const deepFreeze = require("deep-freeze");
 
 const datasetCache = require("../../services/cache-manager").store("datasetstore", 60*60 /*1hr*/);

@@ -1,5 +1,4 @@
 const nodeCache = require("node-cache");
-const _         = require("lodash");
 const log       = _log.get("cache-manager");
 
 module.exports = {

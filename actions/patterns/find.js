@@ -1,6 +1,4 @@
 const log        = _log.get("find-patterns");
-const Schema = require('joi');
-const _          = require("lodash");
 const getDataset = require("../sets/get-dataset");
 
 /**

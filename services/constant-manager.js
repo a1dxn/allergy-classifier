@@ -1,5 +1,4 @@
 const log = _log.get('constant-manager');
-const _ = require('lodash');
 const CONSTANTS = Object.freeze({
 								  DATASET_FILE_PATH         : process.cwd()+'/datasets/bootstrapped/',
 								  DATASET_FILE_EXTENSION    : '.csv',

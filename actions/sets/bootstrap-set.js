@@ -1,7 +1,5 @@
 const log        = _log.get("bootstrap-set");
 const getDataset = require("./get-dataset");
-const Schema     = require("joi");
-const _          = require("lodash");
 
 /**
  * @async

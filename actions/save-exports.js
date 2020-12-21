@@ -1,6 +1,5 @@
 const fs     = require("fs");
 const log    = _log.get("save-exports");
-const Schema = require("joi");
 
 /**
  * @async

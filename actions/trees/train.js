@@ -1,6 +1,4 @@
 const DecisionTree = require("decision-tree");
-const Schema       = require("joi");
-const _            = require("lodash");
 const getDataset   = require("../sets/get-dataset");
 const saveExports  = require("../save-exports");
 const calculateAccuracy = require('./calculate-accuracy');

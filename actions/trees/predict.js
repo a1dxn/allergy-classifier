@@ -1,7 +1,5 @@
 const log     = _log.get("tree-predict");
-const Schema  = require("joi");
 const getTree = require("./get");
-const _ = require('lodash');
 
 /**
  * @async
