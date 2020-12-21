@@ -1,7 +1,7 @@
 const log = _log.get('constant-manager');
 const _ = require('lodash');
 const CONSTANTS = Object.freeze({
-								  DATASET_FILE_PATH         : './datasets/bootstrapped/',
+								  DATASET_FILE_PATH         : process.cwd()+'/datasets/bootstrapped/',
 								  DATASET_FILE_EXTENSION    : '.csv',
 								  DATASET_FILE_KEYWORD_TRAIN: 'TRAIN',
 								  DATASET_FILE_KEYWORD_TEST : 'TEST',
@@ -16,8 +16,8 @@ const CONSTANTS = Object.freeze({
 																				'SOYA',
 																				'WHEAT',
 																			]),
-	TREE_EXPORTS_FILE_PATH: './tree-exports/',
-	TREE_FILE_PATH: './trees/',
+	TREE_EXPORTS_FILE_PATH: process.cwd()+'/tree-exports/',
+	TREE_FILE_PATH: process.cwd()+'/trees/',
 	TREE_FILE_EXTENSION: '.json'
 							  });
 
