@@ -9,7 +9,9 @@ const getDataset = require("../sets/get-dataset");
  * @param {Object} options
  * @param {string} options.allergyKey - Allergy to base dataset from. See constants for allowed set.
  * @param {string[]} options.features - Features to evaluate against, excluding options.allergyKey.
- * @returns {Promise<allergyKey, features, size, result[{path, size, support}]>}
+ * @returns {Promise<{features : string[], size, rules : this, allergyKey : string}>}
+ * @returns {Promise<{allergyKey:string, features:string[], size:number, rules:object[]}>}
+ * Note: Rules object contain {path:string, size:number, support:number} see line 73
  */
 module.exports = async function findPatterns(options) {
 	options = Schema.object({
@@ -19,6 +21,10 @@ module.exports = async function findPatterns(options) {
 												  .items(Schema.get("allergyKey")
 															   .disallow(Schema.ref("allergyKey")))
 												  .required(),
+								minSupport: Schema.number().greater(0.01)
+												  .max(1)
+												  .required()
+												  .failover(CONSTANT("PATTERNS_RULE_MIN_SUPPORT_DEFAULT"))
 							})
 					.validate(options, {abortEarly: false});
 	if(options?.error) {
@@ -37,18 +43,24 @@ module.exports = async function findPatterns(options) {
 	log.notice("Features: %O", options.features);
 
 	while(options.features.length>0) {
-		await goDeeper(options.features, sharedArray, positiveCases, positiveCases.length);
+		await goDeeper(options.features,
+					   sharedArray,
+					   positiveCases,
+					   positiveCases.length,
+					   options.minSupport);
 		options.features = _.tail(options.features);
 	}
 
-	let result    = _.clone(options);
-	result.size   = positiveCases.length;
-	result.result = sharedArray.sort((a, b) => a.support>b.support ? -1 : 1);
-	return result;
+	return {
+		allergyKey: options.allergyKey,
+		features  : options.features,
+		size      : positiveCases.length,
+		rules     : sharedArray.sort((a, b) => a.support>b.support ? -1 : 1)
+	};
 
 };
 
-async function goDeeper(orderedFeatures, sharedArray, data, originalSupport, idPath) {
+async function goDeeper(orderedFeatures, sharedArray, data, originalSupport, minSupport, idPath) {
 	const me     = orderedFeatures[0];
 	let features = _.tail(orderedFeatures);
 	idPath       = (idPath ? idPath+"," : "")+me;
@@ -64,13 +76,17 @@ async function goDeeper(orderedFeatures, sharedArray, data, originalSupport, idP
 		size   : filteredData.length,
 		support: filteredData.length/originalSupport,
 	};
+
+	//If after evaluating the support, its below the min then we arent going to count it or go any further!
+	if(result.support<minSupport) return sharedArray;
+
 	sharedArray.push(result);
 
 	log.debug("%s: %O", idPath, result);
 
 	//Time to go deeper!
 	while(features.length>0) {
-		await goDeeper(features, sharedArray, filteredData, originalSupport, idPath);
+		await goDeeper(features, sharedArray, filteredData, originalSupport, minSupport, idPath);
 		features = _.tail(features);
 	}
 

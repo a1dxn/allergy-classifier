@@ -36,6 +36,12 @@ function get(name, options) {
 		if(_.has(_SCHEMAS, name)) {
 			let retrieved = _.cloneDeep(_SCHEMAS[name]);
 
+			if(options?.omitKeys) {
+				log.debug("going to omit: %O", options.omitKeys);
+				Schema.assert(retrieved, Schema.object());
+				Schema.assert(options.omitKeys, Schema.array().items(Schema.string()));
+				retrieved = _.omit(retrieved, options.omitKeys);
+			}
 			if(options?.allKeysRequired===true) {
 				Schema.assert(retrieved, Schema.object());
 				for(const k in retrieved) {
@@ -43,12 +49,7 @@ function get(name, options) {
 					retrieved[k] = v.required();
 				}
 			}
-			if(options?.omitKeys) {
-				log.debug("going to omit: %O", options.omitKeys);
-				Schema.assert(retrieved, Schema.object());
-				Schema.assert(options.omitKeys, Schema.array().items(Schema.string()));
-				return _.omit(retrieved, options.omitKeys);
-			}
+
 			return retrieved;
 		} else {
 			log.error("Schema %s does NOT exist!", name);

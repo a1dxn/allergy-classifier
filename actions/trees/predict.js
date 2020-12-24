@@ -12,12 +12,14 @@ const getTree = require("./get");
  * @returns {Promise<{path : [], prediction : number}>} prediction will be 0 or 1
  */
 module.exports = async function predictTree(options) {
+	const datasetRowObject = Schema.get("datasetRowObject", {
+		allKeysRequired:true,
+		omitKeys       : [ String(options.allergyKey) ]
+	});
+	for(const k in datasetRowObject) datasetRowObject[k] = datasetRowObject[k].failover(0);
 	options = Schema.object({
 								allergyKey: Schema.get("allergyKey").required(),
-								data      : Schema.object(Schema.get("datasetRowObject", {
-									allKeysRequired: true,
-									omitKeys       : [ String(options.allergyKey) ]
-								})).required(),
+								data      : Schema.object(datasetRowObject).required(),
 							})
 					.validate(options);
 	if(options?.error) {
