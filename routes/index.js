@@ -4,15 +4,7 @@ const log     = _log.get("http:router");
 const trainer = require("../actions/trees/train");
 
 /* GET home page. */
-router.get("/", async(req, res) => {
-
-	require("../actions/trees/calculate-accuracy")({
-													   predictions: [ 0, 1, 0, 1 ],
-													   actuals    : [ 0, 1, 1 ]
-												   })
-		.then(x => res.json(x));
-	res.render("index", {title: "something"});
-});
+router.get("/", async(req, res) => res.render("index"));
 
 router.get("/compare/:allergy", async(req, res) => {
 
