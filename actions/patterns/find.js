@@ -1,5 +1,8 @@
 const log        = _log.get("find-patterns");
 const getDataset = require("../sets/get-dataset");
+const Jsum       = require("Jsum");
+
+const patternstore = require("../../services/cache-manager").store("patternstore", 0);
 
 /**
  * @async
@@ -10,7 +13,7 @@ const getDataset = require("../sets/get-dataset");
  * @param {string} options.allergyKey - Allergy to base dataset from. See constants for allowed set.
  * @param {string[]} options.features - Features to evaluate against, excluding options.allergyKey.
  * @returns {Promise<{features : string[], size, rules : this, allergyKey : string}>}
- * @returns {Promise<{allergyKey:string, features:string[], size:number, rules:object[]}>}
+ * @returns {Promise<{allergyKey:string, features:string[], size:number, rules:object[]}>} (Object Frozen)
  * Note: Rules object contain {path:string, size:number, support:number} see line 73
  */
 module.exports = async function findPatterns(options) {
@@ -21,7 +24,8 @@ module.exports = async function findPatterns(options) {
 												  .items(Schema.get("allergyKey")
 															   .disallow(Schema.ref("allergyKey")))
 												  .required(),
-								minSupport: Schema.number().greater(0.01)
+								minSupport: Schema.number()
+												  .min(0)
 												  .max(1)
 												  .required()
 												  .failover(CONSTANT("PATTERNS_RULE_MIN_SUPPORT_DEFAULT"))
@@ -31,6 +35,9 @@ module.exports = async function findPatterns(options) {
 		log.error("Validation error on options argument. %O", options.error);
 		throw options.error;
 	} else options = options?.value; //Values would be casted to correct data types
+
+	let checksum = Jsum.digest(options, "md5", "base64");
+	if(patternstore.has(checksum)) return _.cloneDeep(patternstore.get(checksum));
 
 	const dataset = await getDataset({
 										 allergyKey: options.allergyKey,
@@ -51,12 +58,15 @@ module.exports = async function findPatterns(options) {
 		options.features = _.tail(options.features);
 	}
 
-	return {
+	const obj = {
 		allergyKey: options.allergyKey,
 		features  : options.features,
 		size      : positiveCases.length,
 		rules     : sharedArray.sort((a, b) => a.support>b.support ? -1 : 1)
 	};
+
+	patternstore.set(checksum, obj);
+	return _.cloneDeep(obj);
 
 };
 
