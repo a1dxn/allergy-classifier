@@ -16,9 +16,13 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//Index routes (probably can keep everything in one file...)
+//Index routes
 app.use("/", require("./routes/index"));
-// app.use("/api", require("./routes/api"));
+if(!process.env.API_LOCAL) {
+	app.use("/api", passport.authenticate("bearer", {session: false}), require("./routes/api"));
+} else {
+	app.use("/api", require("./routes/api"));
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
