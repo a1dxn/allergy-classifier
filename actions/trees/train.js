@@ -2,90 +2,84 @@ const DecisionTree      = require("decision-tree");
 const getDataset        = require("../sets/get-dataset");
 const saveExports       = require("../save-exports");
 const calculateAccuracy = require("./calculate-accuracy");
+const log               = _log.get("train-tree");
 
 //todo: produce jsdoc
 
-module.exports = async function(options) {
-	options = Schema.object({
-								allergyKey: Schema.get("allergyKey").required(),
-								saveData  : Schema.boolean().optional(),
-								trainData : Schema.any(),
-								testData  : Schema.any()
-							})
-					.with("trainData", "testData")
-					.with("trainData", "testData")
-					.validate(options, {abortEarly: false});
-	if(options.error) {
-		_log.get("train-tree").error("Validation error on options argument. %O", options.error);
-		throw options.error;
-	} else options = options.value; //Values would be casted to correct data types
+async function trainTree(options) {
+	let _timer = Date.now();
+	options    = Schema.object({
+								   allergyKey : Schema.get("allergyKey").required(),
+								   saveOutput : Schema.boolean().optional(),
+								   outputSets : Schema.boolean(),
+								   trainSet   : options?._skipSetVal ? Schema.any()
+																	 : Schema.object(Schema.get("dataset")),
+								   testSet    : options?._skipSetVal ? Schema.any()
+																	 : Schema.object(Schema.get("dataset")),
+								   _skipSetVal: Schema.boolean(), //for extra speediness...Avoid using unless sets were validated prior
+								   _uuid      : Schema.string().required()
+													  .failover(options.allergyKey+"-"+Math.random()
+																						   .toString(32)
+																						   .slice(2)
+																						   .toUpperCase())
+							   })
+					   .with("trainSet", "testSet")
+					   .with("testSet", "trainSet")
+					   .validate(options, {abortEarly: false});
+	if(options?.error) throw options.error;
+	else options = options.value;
 
-	const uuid = options.allergyKey+"-"+Math.random().toString(32).slice(2).toUpperCase();
-	const log  = _log.get("train-tree:"+uuid.toLowerCase());
+	let flog = log.get(options._uuid.toLowerCase());
+	_timer   = Date.now()-_timer;
+	flog.debug("Schema validation took %dms", _timer);
 
-	log.debug("Getting datasets...");
+	if(!(options.trainSet || options.testSet)) {
+		const tasks = [
+			getDataset({
+						   allergyKey: options.allergyKey,
+						   setType   : CONSTANT("DATASET_FILE_KEYWORD_TRAIN")
+					   }),
+			getDataset({
+						   allergyKey: options.allergyKey,
+						   setType   : CONSTANT("DATASET_FILE_KEYWORD_TEST")
+					   })
+		];
 
-	let tasks = [];
-	if(options.trainData) {
-		tasks.push(options.trainData);
-		tasks.push(options.testData);
-	} else {
-		tasks.push(getDataset(
-			{
-				allergyKey: options.allergyKey,
-				setType   : CONSTANT("DATASET_FILE_KEYWORD_TRAIN")
-			}));
-		tasks.push(getDataset({
-								  allergyKey: options.allergyKey,
-								  setType   : CONSTANT("DATASET_FILE_KEYWORD_TEST")
-							  }));
+		_timer                      = Date.now();
+		const [ trainSet, testSet ] = await Promise.all(tasks);
+		_timer                      = Date.now()-_timer;
+		flog.debug("Fetching datasets took %dms", _timer);
+		return trainTree(_.extend(options, {trainSet, testSet, _skipSetVal: true})); //recalling but with retrieved datasets!
 	}
-	return Promise.all(tasks)
-				  .then(async(datasets) => {
-					  log.debug("Datasets obtained.");
-					  let _timer   = Date.now();
-					  let features = Object.keys(datasets[0].data[0]).filter(v => v!==options.allergyKey);
-					  log.debug("Features: %O", features);
 
-					  log.notice("Building decision tree... This may take some time!");
-					  let tree = new DecisionTree(datasets[0].data, options.allergyKey, features);
+	_timer = Date.now();
+	//Build & train the decision tree!
+	flog.info("Building decision tree... This may take some time!");
+	const features = _.without(Object.keys(options.trainSet.data[0]), options.allergyKey);
+	const tree     = new DecisionTree(options.trainSet.data, options.allergyKey, features);
+	_timer         = Date.now()-_timer;
+	flog.notice("Decision tree was built in %dms", _timer);
 
-					  _timer = Date.now()-_timer;
-					  log.notice("Decision tree was built in %d seconds", _timer/1000);
+	//Lets do some predictions!
+	const predictions = [], actuals = [];
+	for(const row of options.testSet.data) {
+		actuals.push(row[options.allergyKey]);
+		predictions.push(tree.predict(row));
+	}
 
-					  //Lets do some predictions!
-					  let predictions = [], actuals = [];
-					  for(const d of datasets[1].data) {
-						  actuals.push(d[options.allergyKey]);
-						  predictions.push(tree.predict(d));
-					  }
+	const output    = _.pick(options, [ "_uuid", "allergyKey" ]);
+	output.accuracy = await calculateAccuracy({predictions, actuals});
+	output.model    = tree.toJSON();
+	if(options.outputSets) output.data = _.pick(options, [ "trainSet", "testSet" ]);
 
-					  let accuracy = await calculateAccuracy({predictions, actuals});
+	if(options.saveOutput) {
+		saveExports({
+						name   : output._uuid,
+						content: JSON.stringify(output)
+					}).then((x) => flog.info("Model saved."));
+	}
 
-					  let output = {
-						  allergyKey: options.allergyKey,
-						  uuid,
-						  type      : (options.testData ? "bs" : "ds"),
-						  accuracy,
-						  model     : tree.toJSON()
-					  };
-					  if(options.trainData) {
-						  output.data = {
-							  train: options.trainData,
-							  test : options.testData,
-						  };
-					  }
-					  log.info("Accuracy: %O", output.accuracy);
-					  log.debug("Model outputted");
+	return output;
+}
 
-					  if(options?.saveData ?? true) {
-						  return saveExports({
-												 name   : output.uuid,
-												 content: JSON.stringify(output, null, 2)
-											 })
-							  .then(() => {
-								  return output;
-							  });
-					  } else return output;
-				  });
-};
+module.exports = trainTree;
