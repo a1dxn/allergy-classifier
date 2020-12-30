@@ -7,28 +7,34 @@ Object.freeze(Schema);
 /****/
 
 const _SCHEMAS = {
-
-	allergyKey      : Schema.string()
-							.uppercase()
-							.pattern(new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
-									 "Allergy Key"),
-	setType         : Schema.string()
-							.uppercase()
-							.valid(
-								CONSTANT("DATASET_FILE_KEYWORD_TRAIN"),
-								CONSTANT("DATASET_FILE_KEYWORD_TEST")),
-	rowFeatureValue : Schema.number()
-							.precision(0)
-							.min(0)
-							.max(1)
-							.disallow(null, ""),
-	datasetRowObject: {}, /*See below for loop*/
-
+	allergyKey     : Schema.string()
+						   .uppercase()
+						   .pattern(new RegExp(`(${CONSTANT("DATASET_ALLERGY_KEYS").join("|")})`),
+									"Allergy Key"),
+	setType        : Schema.string()
+						   .uppercase()
+						   .valid(
+							   CONSTANT("DATASET_FILE_KEYWORD_TRAIN"),
+							   CONSTANT("DATASET_FILE_KEYWORD_TEST")),
+	rowFeatureValue: Schema.number()
+						   .precision(0)
+						   .min(0)
+						   .max(1)
+						   .disallow(null, ""),
 };
 
+_SCHEMAS.datasetRowObject = {};
 for(const key of CONSTANT("DATASET_ALLERGY_KEYS")) {
 	_SCHEMAS.datasetRowObject[key] = get("rowFeatureValue");
 }
+
+_SCHEMAS.dataset = {
+	allergyKey: _SCHEMAS.allergyKey.required(),
+	setType   : Schema.string().required().uppercase()
+					  .valid(CONSTANT("DATASET_FILE_KEYWORD_TRAIN"),
+							 CONSTANT("DATASET_FILE_KEYWORD_TEST")),
+	data      : Schema.array().required().items(Schema.object(get("datasetRowObject", {allKeysRequired: true}))),
+};
 
 /****/
 function get(name, options) {
