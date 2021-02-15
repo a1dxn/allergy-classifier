@@ -1,16 +1,17 @@
 const express = require("express");
 const router  = express.Router();
 const log     = _log.get("http:router");
-const trainer = require("../actions/trees/train");
 
 /* GET home page. */
 router.get("/", async(req, res) => {
 	res.render("index", sendGlobalDataToClient(
 		{
-			"GENERATE_PROFILE_URI": process.env.API_LOCAL ? "/generateProfile" : "/public/generateProfile"
+			"GENERATE_PROFILE_URI" : process.env.API_LOCAL ? "/generateProfile" : "/public/generateProfile",
+			"GENERATE_TREE_SVG_URI": process.env.API_LOCAL ? "/svg/generate" : "/public/svg/generate"
 		})
 	);
 });
+router.get("/index.html", (req, res) => res.redirect("/"));
 
 function sendGlobalDataToClient(extraData) {
 	let data = {
@@ -21,7 +22,7 @@ function sendGlobalDataToClient(extraData) {
 
 	data = _.extend(data, extraData);
 
-	return {data};
+	return {a: data};
 }
 
 router.get("/james", (req, res) => res.send(`<h1>♥️</h1>`));
