@@ -39,6 +39,9 @@ $(document).ready(() => {
 		$e.text(emoji(id));
 	});
 
+	//Hide results template
+	$("#results-block").hide();
+
 	//'Predict' button
 	$("#page-collect .button").on("click", () => {
 		const input = {};
@@ -60,7 +63,6 @@ function successPrediction(response, textStatus) {
 	const $list     = $("#results-block ul");
 	const $spinner  = $("#results-loading");
 	const $template = $(".list-item.result").clone();
-	$template.hide();
 	$list.empty();
 
 	response.sort((a, b) => b.prediction.prediction-a.prediction.prediction);
@@ -110,7 +112,8 @@ function successPrediction(response, textStatus) {
 
 		// $item.show();
 		$list.append($item);
-		$spinner.hide(200);
+		$("#results-block").show();
+		$spinner.hide(500);
 		$("#"+id).fadeIn(200);
 
 		(function treeDiagram(id, res) { //tree loading is async
