@@ -33,7 +33,7 @@ module.exports = async function(path) {
 										  "expected result step"));
 
 	const pathStringRepresentation = path.join("->");
-	log.debug("Generating SVG for path:%S.", pathStringRepresentation);
+	log.debug("Generating SVG for path: %s", pathStringRepresentation);
 
 	const stepCount = path.length;
 	const steps     = path.map((v) => parseInt(v[v.length-1]));
@@ -45,7 +45,7 @@ module.exports = async function(path) {
 	};
 
 	const startingPoint = Math.abs(wSize?.maxLeft);
-	const initialSVG    = `<svg width="${canvas.width}" height="${canvas.height}">`;
+	const initialSVG    = `<svg class="tree" width=100% height="auto" viewBox="0 0 ${canvas.width} ${canvas.height}">`;
 
 	return traverse(startingPoint+PADDING_LEFT, PADDING_TOP, path, initialSVG).then((result) => {
 		log.info("SVG generated in %dms for path:%s.", Date.now()-_start, pathStringRepresentation);

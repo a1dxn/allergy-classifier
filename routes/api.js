@@ -5,7 +5,7 @@ const log    = _log.get("http:router");
 
 /*** --base-- ***/
 router.get("/", async(req, res) => {
-	return res.json({x:"Hello!"});
+	return res.json(["Hello!"]);
 });
 
 /*** --Generate Profile-- (internet-facing) ***/
@@ -30,13 +30,16 @@ router.post("/svg/generate", async(req, res) => {
 	const generateSVG = require("../actions/svg/generate");
 
 	let input = req.body;
+	if(input["path[]"]) input = input["path[]"];
+	else if(input["path"]) input = input["path"];
+
 	generateSVG(input)
 		.then(svg => {
 			log.debug("SVG generated successfully.");
-			res.status(201).render("svg-tree", {svg});
+			res.status(201).send(svg);
 		})
 		.catch(error => {
-			log.warn("Error occurred on /api/patterns/find");
+			log.debug("Error occurred on /api/svg/generate");
 			return Err({error, input}, res);
 		});
 });
@@ -149,9 +152,7 @@ router.post("/sets/get", async(req, res) => {
 		});
 });
 
-
 //todo: sets/combine-sets - waiting to reformat existing actions first!
 //todo: sets/bootstrap-set - waiting to reformat existing actions first!
-
 
 module.exports = router;
