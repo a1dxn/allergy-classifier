@@ -1,8 +1,13 @@
 #!/usr/bin/env node
+const _ = require("lodash");
 
-/*** Logging Initialisation ***/
-process.env.LOG_LEVEL = "notice";
-process.env.LOG_TIME = "abs";
+/*** Environment Variables & Defaults***/
+process.env.API_ENDPOINT    = process.env.API_ENDPOINT ?? "/api";
+process.env.API_LOCAL       = process.env.API_LOCAL ?? (process.env?.API_ENDPOINT==null || process.env?.API_ENDPOINT==="/api");
+process.env.APIM_PUBLIC_KEY = process.env.APIM_PUBLIC_KEY ?? "";
+process.env.PORT            = process.env.PORT ?? 3000;
+process.env.LOG_LEVEL       = process.env.LOG_LEVEL ?? "debug";
+process.env.LOG_TIME        = "abs";
 require("log-node")();
 
 /*** Global Variables ***/
@@ -14,33 +19,20 @@ global.CONSTANT = require("../services/constant-manager");
 global.dateUtils = require("date-and-time");
 dateUtils.plugin(require("date-and-time/plugin/ordinal"));
 /*lodash*/
-global._ = require("lodash");
+global._ = _;
 /*Schema Validation (Joi)*/
 global.Schema = require("../services/schema-manager");
-/*Web Sockets*/
-global.WS = null; //Defined in Socket.IO section
 
 /*** HTTP Server ***/
 _log.get("http").notice("Initialising HTTP Server");
 const app  = require("../app");
-const port = parseInt(process.env.PORT || 3000);
+const port = parseInt(process.env.PORT);
 app.set("port", port);
 
 const server = require("http").createServer(app);
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
-
-/*** Socket.IO ***/
-_log.get("web-socket").notice("Initialising Socket.IO");
-const socketManager = require("../services/socket-manager");
-global.WS           = require("socket.io")(server);
-WS.on("connection", (wsClient) => {
-	const flog = _log.get("web-socket");
-	flog.debug("Connection established: %s", wsClient.id);
-	socketManager(WS, wsClient).then(() => {
-	});
-});
 
 /*** Event Listeners for HTTP Server ***/
 function onListening() {

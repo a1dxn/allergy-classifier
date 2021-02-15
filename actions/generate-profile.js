@@ -1,6 +1,7 @@
 const log          = _log.get("generate-profile");
 const predictTree  = require("../actions/trees/predict");
 const findPatterns = require("../actions/patterns/find");
+const getTree      = require("../actions/trees/get");
 
 /**
  *
@@ -8,38 +9,43 @@ const findPatterns = require("../actions/patterns/find");
  * @returns {Promise<[{allergyKey, data, prediction, patterns}]>}
  */
 module.exports = async function generateProfile(data) {
-	data = Schema.object(Schema.get("datasetRowObject")).validate(data, {abortEarly: false});
+	data = Schema.object(Schema.get("datasetRowObject", {allKeysRequired: true})).validate(data, {abortEarly: false});
 	if(data?.error) {
 		log.error("Validation error on options argument. %O", data.error);
 		throw data.error;
 	} else data = data?.value; //Values would be casted to correct data types
 
-	log.info('data: %O', data);
+	log.info("data: %O", data);
 
+	const keys         = _.keys(data);
+	const positiveKeys = keys.filter(v => data[v]===1);
+	const negativeKeys = keys.filter(v => data[v]===0);
 
-	const existingKeys = _.keys(data);
-	const missingKeys  = CONSTANT("DATASET_ALLERGY_KEYS");
-	for(const k of existingKeys) _.pull(missingKeys, k);
-	if(missingKeys.length===0) {
-		//They have everything so theres no point evaluating against our models...
-		//todo: Perhaps it may be worth using this for testing the accuracy?
-	}
-	log.info('existingKeys: %O', existingKeys);
-	log.info('missingKeys: %O', missingKeys);
+	log.debug("positiveKeys: %O", positiveKeys);
+	log.debug("negativeKeys: %O", negativeKeys);
 
 	let todo = [];
-	for(const k of missingKeys) {
+	for(const k of negativeKeys) {
 		const p = Promise.all([
-								  predictTree({allergyKey: k, data}),
-								  findPatterns({allergyKey: k, features: existingKeys})
+								  /*0 DT prediction*/predictTree({allergyKey: k, data: _.omit(data, k)}),
+								  /*1 Top patterns*/findPatterns({allergyKey: k, features: _.without(keys, k)}),
+								  /*2 PositiveKey patterns*/findPatterns({allergyKey: k, features: _.without(positiveKeys, k)}),
+								  /*3 DT Tree Accuracy*/getTree(k)
 							  ])
 						 .then(res => {
-						 	res[1].rules = _.take(res[1].rules, CONSTANT("PATTERNS_RULE_LIMIT"));
+							 res[1].rules            = _.take(res[1].rules, CONSTANT("PATTERNS_RULE_LIMIT"));
+							 res[3].rules            = _.take(res[3].rules, CONSTANT("PATTERNS_RULE_LIMIT"));
+							 let prediction          = res[0];
+							 prediction.treeAccuracy = res[3].accuracy;
+
 							 return {
 								 allergyKey: k,
 								 data,
-								 prediction: res[0],
-								 patterns  : res[1]
+								 prediction,
+								 patterns  : {
+									 chosenFeatures: res[2],
+									 allFeatures   : res[1]
+								 }
 							 };
 						 })
 						 .catch(e => {
@@ -50,6 +56,5 @@ module.exports = async function generateProfile(data) {
 	}
 
 	return Promise.all(todo);
-
 
 };
