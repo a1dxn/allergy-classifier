@@ -100,7 +100,7 @@ function successPrediction(response, textStatus) {
 		(function associationRules() {
 			const $ruleList = $item.find("#associations");
 			$ruleList.empty();
-			for(const rule of res.patterns.chosenFeatures.rules) {
+			for(const rule of res.patterns.allFeatures.rules) {
 				const path     = rule.path.replace(",", " & ")
 					, listItem = `${highlight((rule.support*100).toPrecision(precision)+"%")}
 					 of people allergic to ${allergyKey} are allergic to ${highlight(path)}`;

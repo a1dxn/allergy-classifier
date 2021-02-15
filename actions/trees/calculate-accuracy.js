@@ -32,7 +32,7 @@ module.exports = async function calculateAccuracy(options) {
 	} else options = options?.value; //Values would be casted to correct data types
 
 	let results = {
-		TP: 0, TN: 0, FP: 0, FN: 0
+		size: options.predictions.length, TP: 0, TN: 0, FP: 0, FN: 0
 	};
 
 	for(let i in options.predictions) {
