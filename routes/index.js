@@ -13,6 +13,11 @@ router.get("/", async(req, res) => {
 });
 router.get("/index.html", (req, res) => res.redirect("/"));
 
+router.get("/participant-information",
+		   (req, res) => res.render("participant-information"));
+router.get("/participant-information.html",
+		   (req, res) => res.redirect("/participant-information"));
+
 function sendGlobalDataToClient(extraData) {
 	let data = {
 		"API_ENDPOINT"   : process.env.API_ENDPOINT,
