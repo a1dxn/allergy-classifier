@@ -1,0 +1,26 @@
+{
+	"routes": [
+		{
+			"route": "/participant-information",
+			"rewrite": "/participant-information.html"
+		},
+		{
+			"route": "/trees/*.json",
+			"headers": {
+				"cache-control": "public, max-age=172800, must-revalidate"
+			}
+		},
+		{
+			"route": "/sets/*.json",
+			"headers": {
+				"cache-control": "public, max-age=172800, must-revalidate"
+			}
+		}
+	],
+	"globalHeaders": {
+		"cache-control": "public, max-age=604800, immutable"
+	},
+	"mimeTypes": {
+		".json": "application/json"
+	}
+}
