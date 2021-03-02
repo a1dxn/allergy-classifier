@@ -15,6 +15,10 @@
 			"headers": {
 				"cache-control": "public, max-age=172800, must-revalidate"
 			}
+		},
+		{
+			"route": "/james",
+			"rewrite": "/james.html"
 		}
 	],
 	"globalHeaders": {
