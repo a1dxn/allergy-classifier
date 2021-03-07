@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-const _ = require("lodash");
+const _ = require("lodash")
+	  ,LogRocket = require('logrocket');
+LogRocket.init('2t1hft/allergyfamilyio');
 
 /*** Environment Variables & Defaults***/
 process.env.API_ENDPOINT    = process.env.API_ENDPOINT ?? "/api";

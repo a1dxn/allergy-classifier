@@ -21,6 +21,7 @@
 		"lodash": "^4.17.21",
 		"log": "^6.0.0",
 		"log-node": "^7.0.0",
+		"logrocket": "^1.0.14",
 		"morgan": "~1.9.1",
 		"node-cache": "^5.1.2",
 		"passport": "^0.4.1",
